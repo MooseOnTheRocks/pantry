@@ -1,0 +1,13 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add Food{% endblock title %}
+{% block content %}
+<form action="{{ url_for('myfood_addfooditem') }}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <label for="category">Category:</label>
+    <input type="text" name="category" id="category">
+    <label for="calories">Calories:</label>
+    <input type="text" name="calories" id="calories">
+    <input type="submit" value="Add food">
+</form>
+{% endblock content %}

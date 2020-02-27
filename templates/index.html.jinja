@@ -1,0 +1,19 @@
+{% extends "base.html.jinja" %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<h1>Pantry</h1>
+<h2>A Grocery Application for Users</h2>
+{% if username %}
+Hello, {{ username }}!
+{% else %}
+Welcome to Pantry!
+{% endif %}
+<br>
+What would you like to do?
+<br>
+<b><a href="/myfood/list">View foods</a></b>
+<br>
+<b><a href="/myfood/add">Add food</a></b>
+
+{% endblock content %}

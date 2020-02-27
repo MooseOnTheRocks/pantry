@@ -1,0 +1,13 @@
+{% extends "base.html.jinja" %}
+{% block title %}List View{% endblock title %}
+{% block content %}
+{% if fooditems %}
+<ul>
+{% for fooditem in fooditems %}
+    <li>{{ fooditem }}</li>
+{% endfor %}
+</ul>
+{% else %}
+No foods to display!
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "base.html.jinja" %}
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+<h3 align="center">Search for a product</h3>
+<form align="center" action="/search" method="post">
+    <label>Name: </label> 
+    <input type="text" name="food_name">
+    <input type="submit" name='submit' value='submit'>
+</form> 
+
+<table align="center">
+	<thead>
+		<tr>
+			<th> Product </th>
+			<th> Image </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for name in result %}
+		<tr>
+			<td> {{name[0]}} </td>
+			<td> <img src="/static/img/{{name[0]}}.jpg" alt="{{name[0]}}" style="width:500px;height:600px;"> </td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock content %}

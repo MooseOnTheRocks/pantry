@@ -4,16 +4,19 @@
 {% block content %}
 <h1>Pantry</h1>
 <h2>A Grocery Application for Users</h2>
-{% if username %}
-Hello, {{ username }}!
+<p align="center">
+{% if user_id %}
+Hello, User {{ user_id }}!
 {% else %}
 Welcome to Pantry!
 {% endif %}
+</p>
+<p align="center">What would you like to do?</p>
 <br>
-What would you like to do?
-<br>
-<b><a href="/myfood/list">View foods</a></b>
-<br>
-<b><a href="/myfood/add">Add food</a></b>
+<p align="center"><b><a href="/list/{{user_id}}">View foods</a></b></p>
+<p align="center"><b><a href="/add/{{user_id}}">Add food</a></b></p>
+<p align="center"><b><a href="/cart/{{user_id}}">Cart</a></b></p>
+<p align="center"><b><a href="/search">Search</a></b></p>
+
 
 {% endblock content %}

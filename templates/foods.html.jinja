@@ -4,7 +4,7 @@
 {% if fooditems %}
 <ul>
 {% for fooditem in fooditems %}
-    <li>{{ fooditem }}</li>
+    <li>{{ fooditem }} <img src="/static/img/{{fooditem}}.jpg" alt="{{fooditem}}"></li>
 {% endfor %}
 </ul>
 {% else %}

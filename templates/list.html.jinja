@@ -1,0 +1,26 @@
+{% extends "base.html.jinja" %}
+{% block title %}List View{% endblock title %}
+{% block content %}
+<h3 align="center">Pantry for User {{ user_id }}</h3>
+{% if fooditems %}
+<table align="center">
+    <thead>
+        <tr>
+            <th> Product </th>
+            <th> Image </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for fooditem in fooditems %}
+        <tr>
+        <td> {{ fooditem[0] }} </td>
+            <td> <img src="/static/img/{{ fooditem[0] }}.jpg" alt="{{ fooditem[0] }}" style="width:500px;height:600px;"> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+No foods to display!
+{% endif %}
+{% endblock content %}

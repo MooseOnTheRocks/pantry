@@ -14,12 +14,12 @@ class DatabaseConnection:
     # -- SQL Support
     def select(self, table, *cols):
         if len(cols) == 0:
-            return Cursor(self._connection, f"SELECT * FROM {table}")
+            return Cursor(self._connection, f"SELECT * FROM `{table}`;")
         else:
-            return Cursor(self._connection, f"SELECT {','.join(map(str, cols))} FROM {table}")
+            return Cursor(self._connection, f"SELECT {','.join(map(lambda x: '`' + str(x) + '`', cols))} FROM `{table}`;")
     
     def executeSQL(self, sql):
-        return Cusor(self._connection, sql)
+        return Cursor(self._connection, sql)
     
     def connect(self):
         self._connection = mysql.connect(host=self.host, user=self.user, password=self.password, database=self.database, **self.kwargs)
@@ -42,16 +42,21 @@ class DatabaseConnection:
         self.close()
 
 class Cursor:
-    def __init__(self, connection, sql):
+    def __init__(self, connection, sql, should_commit=False):
         self._connection = connection
         self._sql = sql
+        self._should_commit = should_commit
     
     def execute(self):
-        self._cursor = self._connection.cursor()
+        print("Executing: " + self._sql)
+        self._cursor = self._connection.cursor(buffered=True)
         self._cursor.execute(self._sql)
         return self
     
     def close(self):
+        if self._should_commit == True:
+            print("Commiting...")
+            self._cursor.commit()
         self._cursor.close()
     
     # -- Iterable

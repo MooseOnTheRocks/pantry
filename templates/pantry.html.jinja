@@ -1,0 +1,23 @@
+<h3 align="center">Pantry for Lebron James (user id = 1)</h3>
+<br>
+
+<table align="center">
+	<thead>
+		<tr>
+			<th> Product </th>
+			<th> Quantity </th>
+			<th> Image </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for item in result %}
+		<tr>
+			<td> {{item[0]}} </td>
+			<td> {{item[1]}} </td>
+			<td> <img src="/static/img/{{item[0]}}.jpg" alt="{{item[0]}}" style="width:250px;height:300px;"> </td>
+		</tr>
+		{% endfor %}
+	</tbody>
+
+</table>
